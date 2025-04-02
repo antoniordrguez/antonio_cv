@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Antonio José Rodríguez Nevado - CV</title>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#003366',
+              lightgray: '#f9f9f9',
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
+  </head>
+  <body class="bg-lightgray text-gray-800 font-sans">
+    <!-- Hero Section -->
+    <section id="hero" class="h-screen flex items-center justify-center text-center px-6 bg-white">
+      <div data-aos="fade-in">
+        <h1 class="text-5xl font-bold">Antonio José Rodríguez Nevado</h1>
+        <p class="mt-4 text-xl">Data Analyst | Data Engineer | Data Scientist</p>
+        <a href="#contact" class="mt-8 inline-block px-6 py-3 bg-primary text-white rounded-xl text-lg hover:bg-blue-800 transition">Contáctame</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-lightgray">
+      <div class="max-w-4xl mx-auto" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6">Acerca de mí</h2>
+        <p>
+          Soy un Data Analyst con más de dos años de experiencia en proyectos de análisis, ingeniería y ciencia de datos. Domino herramientas como Python, SQL, Spark y AWS. Me caracterizo por ser proactivo, autodidacta, y tener una fuerte orientación a resultados.
+        </p>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6 bg-white">
+      <div class="max-w-5xl mx-auto" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-12 text-center">Experiencia</h2>
+        <div class="space-y-8">
+          <div class="bg-lightgray p-6 rounded-xl shadow-md" data-aos="fade-up" data-aos-delay="100">
+            <h3 class="text-xl font-semibold text-primary">Data Analyst | Endesa X</h3>
+            <p class="mt-2 text-gray-700">
+              Análisis de datos, desarrollo de ETL, modelos predictivos y dashboards con Power BI/Tableau. Bases de datos SQL y NoSQL. Colaboración con equipos técnicos y de negocio.
+            </p>
+            <span class="text-sm text-gray-500">2022 - Presente</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 px-6 bg-lightgray">
+      <div class="max-w-4xl mx-auto" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6">Educación</h2>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <h3 class="text-xl font-semibold">Máster en Big Data, Data Science & AI</h3>
+          <p class="text-gray-700">Universidad Complutense de Madrid (2024 - 2025)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 bg-white">
+      <div class="max-w-4xl mx-auto" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6">Habilidades</h2>
+        <ul class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <li>Python</li>
+          <li>SQL</li>
+          <li>Spark</li>
+          <li>AWS</li>
+          <li>MongoDB</li>
+          <li>Power BI / Tableau</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-lightgray">
+      <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-6">Contacto</h2>
+        <p>Email: <a href="mailto:antonio.rn98@gmail.com" class="text-primary">antonio.rn98@gmail.com</a></p>
+        <p>Teléfono: +34 722 23 67 62</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/antonio-jose-rodriguez-nevado/" class="text-primary" target="_blank">antonio-jose-rodriguez-nevado</a></p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center py-6 text-sm bg-white">
+      <p>© 2025 Antonio José Rodríguez Nevado</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800 });
+    </script>
+  </body>
+</html>
