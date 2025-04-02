@@ -7,3 +7,6 @@ description: "Mi página personal con mi CV"
 # Plugins
 plugins:
   - jekyll-seo-tag
+
+# Theme
+theme: jekyll-theme-minimal
