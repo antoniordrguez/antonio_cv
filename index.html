@@ -36,9 +36,33 @@
       html {
         scroll-behavior: smooth;
       }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont,
+          "SF Pro Text", "SF Pro Icons",
+          "Helvetica Neue", "Helvetica",
+          "Arial", sans-serif;
+      }
     </style>
   </head>
   <body class="bg-lightgray text-gray-800 font-sans">
+
+    <!-- NAV -->
+    <nav class="fixed top-0 left-0 w-full bg-[#1D1D1F] text-white shadow-md z-50">
+      <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+        <div class="font-semibold text-lg">
+          Antonio
+        </div>
+        <ul class="flex space-x-6 text-base">
+          <!-- Ajusta estos enlaces a tus secciones -->
+          <li><a href="#hero" class="hover:underline">Inicio</a></li>
+          <li><a href="#about" class="hover:underline">Acerca de mí</a></li>
+          <li><a href="#experience" class="hover:underline">Experiencia</a></li>
+          <li><a href="#education" class="hover:underline">Educación</a></li>
+          <li><a href="#skills" class="hover:underline">Habilidades</a></li>
+          <li><a href="#contact" class="hover:underline">Contacto</a></li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- Hero Section -->
     <section id="hero" class="h-screen flex flex-col items-center justify-center text-center px-6 bg-white" data-aos="fade-in">
