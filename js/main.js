@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 1) Cargar hero.html en #hero-container
-  loadHTMLInto("hero.html", "hero-container", () => {
+  loadHTMLInto("_includes/hero.html", "hero-container", () => {
     AOS.refresh();
   });
 
