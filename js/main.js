@@ -7,12 +7,30 @@ document.addEventListener("DOMContentLoaded", () => {
     // Puedes poner otras opciones si quieres
   });
 
-  // Cargar cada Markdown
+  // 1) Cargar hero.html en #hero-container
+  loadHTMLInto("hero.html", "hero-container", () => {
+    AOS.refresh();
+  });
+
+  // 2) Cargar cada Markdown
   loadMarkdownInto("md/about.md", "about-content");
   loadMarkdownInto("md/experience.md", "experience-content");
   loadMarkdownInto("md/education.md", "education-content");
   loadMarkdownInto("md/skills.md", "skills-content");
 });
+
+/** 
+ * Inyectar un archivo HTML (hero.html) en un elemento dado
+ */
+function loadHTMLInto(htmlPath, elementId, callback) {
+  fetch(htmlPath)
+    .then(res => res.text())
+    .then(htmlContent => {
+      document.getElementById(elementId).innerHTML = htmlContent;
+      if (callback) callback();
+    })
+    .catch(err => console.error(`Error cargando ${htmlPath}:`, err));
+}
 
 /**
  * Función para cargar Markdown y convertirlo a HTML con marked.
