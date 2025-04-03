@@ -1,5 +1,23 @@
 // js/main.js
 
+// Conf Global Marked
+marked.setOptions({
+  gfm: true,
+  breaks: true,
+  mangle: false,    // Evita "ofuscar" emails, ya no necesario
+  smartLists: true, // Mejor manejo de listas anidadas
+  smartypants: true,// Comillas y guiones tipográficos
+  headerIds: true,  // Generar IDs en encabezados
+  headerPrefix: 'md-', // Prefijo de IDs para evitar conflictos
+  highlight: function (code, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      return hljs.highlight(code, { language: lang }).value;
+    }
+    // Si no se detecta el lenguaje, uso highlight automático
+    return hljs.highlightAuto(code).value;
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   // Inicializar AOS
   AOS.init({
