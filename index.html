@@ -41,14 +41,22 @@
   <body class="bg-lightgray text-gray-800 font-sans">
 
     <!-- Hero Section -->
-    <section id="hero" class="h-screen flex flex-col items-center justify-center text-center px-6 bg-white"
-             data-aos="fade-in">
+    <section id="hero" class="h-screen flex flex-col items-center justify-center text-center px-6 bg-white" data-aos="fade-in">
       <h1 class="text-5xl font-bold" id="hero-name">ANTONIO JOSÉ RODRÍGUEZ NEVADO</h1>
       <p class="mt-4 text-xl" id="hero-role">Data Engineer | Data Scientist | Data Analyst</p>
-      <a href="#"
-        class="button2">
-        Contact
-      </a>
+
+      <!-- Fila de botones (con Tailwind) -->
+      <div class="flex space-x-4 mt-8">
+        <!-- “Contact” button -->
+        <a href="#contact" class="button2 button2-orange">
+          Contact
+        </a>
+
+        <!-- Otro botón genérico -->
+        <a href="assets/cv/cv_antonio.pdf" class="button2 button2-turquoise" download>
+          Download CV
+        </a>
+      </div>
     </section>
 
     <!-- About Section -->
