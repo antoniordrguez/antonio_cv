@@ -1,55 +1,47 @@
 // js/scroll.js
 
-const main = document.querySelector('main');
+const main = document.querySelector('#scroll-container'); // ahora tiene un ID
 const sections = document.querySelectorAll('section');
 let scrollTimeout = null;
 
-// Función de interpolación (easing) para la animación: easeInOutQuad
-// - va acelerando al principio y desacelerando al final
+// Curva de easing: aceleración suave y desaceleración (easeInOutQuad)
 function easeInOutQuad(t) {
-  return t < 0.5 
-    ? 2 * t * t 
+  return t < 0.5
+    ? 2 * t * t
     : -1 + (4 - 2 * t) * t;
 }
 
 /**
- * Desplaza el scroll de `main` hacia la posición `targetY` (en píxeles)
- * usando requestAnimationFrame durante `durationMs`.
+ * Scroll animado desde la posición actual hasta `targetY`
+ * usando easing y requestAnimationFrame
  */
-function customSmoothScroll(targetY, durationMs = 800) {
+function customSmoothScroll(targetY, durationMs = 800, callback) {
   const startY = main.scrollTop;
-  const diff = targetY - startY;   // desplazamiento total a recorrer
+  const distance = targetY - startY;
   const startTime = performance.now();
 
-  function tick(now) {
-    // tiempo transcurrido desde que inició la animación
-    const elapsed = now - startTime;
-    // progreso normalizado en rango [0..1]
+  function animateScroll(currentTime) {
+    const elapsed = currentTime - startTime;
     const progress = Math.min(elapsed / durationMs, 1);
-
-    // aplica la curva de animación (ease in out)
     const easedProgress = easeInOutQuad(progress);
 
-    // establece la posición de scroll en base al easedProgress
-    main.scrollTop = startY + diff * easedProgress;
+    main.scrollTop = startY + distance * easedProgress;
 
     if (progress < 1) {
-      // si no hemos terminado la animación, sigue
-      requestAnimationFrame(tick);
+      requestAnimationFrame(animateScroll);
+    } else if (callback && typeof callback === 'function') {
+      callback(); // ejecuta AOS.refresh u otro código al final
     }
   }
 
-  requestAnimationFrame(tick);
+  requestAnimationFrame(animateScroll);
 }
 
-// Escucha el evento scroll en el main
+// Detectar fin de scroll manual
 main.addEventListener('scroll', () => {
-  // cada vez que haya scroll, limpiamos el timeout anterior
   if (scrollTimeout) clearTimeout(scrollTimeout);
 
-  // definimos un nuevo timeout para detectar que el usuario "paró" de scrollear
   scrollTimeout = setTimeout(() => {
-    // Calcula el centro visible del main
     const scrollTop = main.scrollTop;
     const viewportHeight = main.clientHeight;
     const viewportCenterY = scrollTop + viewportHeight / 2;
@@ -57,7 +49,6 @@ main.addEventListener('scroll', () => {
     let closestSection = null;
     let minDistance = Infinity;
 
-    // Determina cuál sección está más cerca del centro
     sections.forEach(section => {
       const sectionTop = section.offsetTop;
       const sectionHeight = section.offsetHeight;
@@ -70,18 +61,18 @@ main.addEventListener('scroll', () => {
       }
     });
 
-    // Si encontramos la sección más cercana
     if (closestSection) {
-      // Calculamos la posición Y para que quede centrada en la pantalla
       const targetY =
-        closestSection.offsetTop
-        + closestSection.offsetHeight / 2
-        - viewportHeight / 2;
+        closestSection.offsetTop +
+        closestSection.offsetHeight / 2 -
+        viewportHeight / 2;
 
-      // Desplazamiento suave con easeInOut
-      customSmoothScroll(targetY, 1000); 
-      // 1000 ms = duración de 1 segundo; ajústalo a tu gusto
+      // Scroll animado + refresh de AOS al finalizar
+      customSmoothScroll(targetY, 1000, () => {
+        if (window.AOS && typeof AOS.refresh === 'function') {
+          AOS.refresh();
+        }
+      });
     }
-
-  }, 200); // Espera de 200ms tras el último scroll; ajústalo según tu preferencia
+  }, 300); // espera tras scroll (ajustable)
 });
