@@ -50,9 +50,15 @@
       }
     </style>
   </head>
-  <body class="bg-lightgray text-gray-800 font-sans pb-24">
+  <!-- 
+       h-screen, flex, flex-col: 
+         Para ocupar el alto total y permitir un contenedor principal.
+       bg-lightgray, text-gray-800: 
+         Colores base de tu sitio.
+    -->
+  <body class="h-screen flex flex-col bg-lightgray text-gray-800 font-sans">
 
-    <!-- NAV -->
+    <!-- Barra de navegación fija -->
     <nav class="fixed top-0 left-0 w-full bg-[#1D1D1F] text-white shadow-md z-50">
       <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <div class="font-semibold text-lg">
@@ -70,103 +76,148 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section 
-      id="hero" 
-      class="pt-24 px-6 bg-white flex items-center justify-center min-h-screen">
-      <div class="max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start">
-        <!-- Columna de texto -->
-        <div 
-          class="w-full md:w-1/2 md:pr-8 flex flex-col items-center md:items-start text-center md:text-left" 
-          data-aos="fade-right"
-        >
-          <h1 class="text-5xl font-bold" id="hero-name">
-            ANTONIO JOSÉ RODRÍGUEZ NEVADO
-          </h1>
-          <p class="mt-4 text-xl" id="hero-role">
-            Data Engineer | Data Scientist | Data Analyst
-          </p>
+    <!-- 
+         Contenedor principal con scroll snap:
+         - snap-y snap-mandatory: Forzar el snap vertical.
+         - overflow-y-scroll: Para poder hacer scroll en este contenedor.
+         - scroll-smooth: Para un desplazamiento suave.
+         - pt-24: Compensa la altura de la navbar fija.
+         - pb-16: Compensa la altura del footer fijo.
+    -->
+    <main class="snap-y snap-mandatory h-screen overflow-y-scroll scroll-smooth pt-16 pb-16">
 
-          <!-- Fila de botones -->
-          <div class="flex flex-row space-x-4 mt-8">
-            <a href="#contact" class="button2 button2-orange">
-              Contact
-            </a>
-            <a href="assets/cv/cv_antonio.pdf" 
-              class="button2 button2-turquoise" 
-              download>
-              Download CV
-            </a>
+      <!-- Hero Section -->
+      <section 
+        id="hero" 
+        class="snap-start h-screen px-6 bg-white flex items-center justify-center"
+      >
+        <div class="max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start">
+          <!-- Columna de texto -->
+          <div 
+            class="w-full md:w-1/2 md:pr-8 flex flex-col items-center md:items-start text-center md:text-left"
+            data-aos="fade-right"
+          >
+            <h1 class="text-5xl font-bold" id="hero-name">
+              ANTONIO JOSÉ RODRÍGUEZ NEVADO
+            </h1>
+            <p class="mt-4 text-xl" id="hero-role">
+              Data Engineer | Data Scientist | Data Analyst
+            </p>
+
+            <!-- Fila de botones -->
+            <div class="flex flex-row space-x-4 mt-8">
+              <a href="#contact" class="button2 button2-orange">
+                Contact
+              </a>
+              <a href="assets/cv/cv_antonio.pdf" 
+                class="button2 button2-turquoise" 
+                download
+              >
+                Download CV
+              </a>
+            </div>
+          </div>
+
+          <!-- Columna de imagen -->
+          <div 
+            class="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center md:justify-end"
+            data-aos="fade-left"
+          >
+            <img 
+              src="assets/images/me.png" 
+              alt="Foto de Antonio" 
+              class="rounded-full h-64 w-64 object-cover shadow-lg float-anim"
+            />
           </div>
         </div>
+      </section>
 
-        <!-- Columna de imagen -->
-        <div 
-          class="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center md:justify-end" 
-          data-aos="fade-left"
-        >
-          <img 
-            src="assets/images/me.png" 
-            alt="Foto de Antonio" 
-            class="rounded-full h-64 w-64 object-cover shadow-lg float-anim"
-          />
+      <!-- About Section -->
+      <section 
+        id="about" 
+        class="snap-start h-screen px-6 bg-lightgray flex items-center justify-center"
+        data-aos="fade-up"
+      >
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6">Acerca de mí</h2>
+          <!-- Aquí inyectaremos el contenido de about.md -->
+          <div id="about-content" class="prose"></div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 px-6 bg-lightgray" data-aos="fade-up">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">Acerca de mí</h2>
-        <!-- Aquí inyectaremos el contenido de about.md -->
-        <div id="about-content" class="prose"></div>
-      </div>
-    </section>
+      <!-- Experience Section -->
+      <section 
+        id="experience"
+        class="snap-start h-screen px-6 bg-white flex items-center justify-center"
+        data-aos="fade-up"
+      >
+        <div class="max-w-5xl mx-auto">
+          <h2 class="text-3xl font-bold mb-12 text-center">Experiencia</h2>
+          <!-- Aquí inyectaremos el contenido de experience.md -->
+          <div id="experience-content" class="prose"></div>
+        </div>
+      </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 px-6 bg-white" data-aos="fade-up">
-      <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold mb-12 text-center">Experiencia</h2>
-        <!-- Aquí inyectaremos el contenido de experience.md -->
-        <div id="experience-content" class="prose"></div>
-      </div>
-    </section>
+      <!-- Education Section -->
+      <section 
+        id="education"
+        class="snap-start h-screen px-6 bg-lightgray flex items-center justify-center"
+        data-aos="fade-up"
+      >
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6">Educación</h2>
+          <!-- Aquí inyectaremos el contenido de education.md -->
+          <div id="education-content" class="prose"></div>
+        </div>
+      </section>
 
-    <!-- Education Section -->
-    <section id="education" class="py-20 px-6 bg-lightgray" data-aos="fade-up">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">Educación</h2>
-        <!-- Aquí inyectaremos el contenido de education.md -->
-        <div id="education-content" class="prose"></div>
-      </div>
-    </section>
+      <!-- Skills Section -->
+      <section
+        id="skills"
+        class="snap-start h-screen px-6 bg-white flex items-center justify-center"
+        data-aos="fade-up"
+      >
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6">Habilidades</h2>
+          <!-- Aquí inyectaremos el contenido de skills.md -->
+          <div id="skills-content" class="prose"></div>
+        </div>
+      </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 px-6 bg-white" data-aos="fade-up">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">Habilidades</h2>
-        <!-- Aquí inyectaremos el contenido de skills.md -->
-        <div id="skills-content" class="prose"></div>
-      </div>
-    </section>
+      <!-- Contact Section -->
+      <section
+        id="contact"
+        class="snap-start h-screen px-6 bg-lightgray flex items-center justify-center text-center"
+        data-aos="fade-up"
+      >
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-6">Contacto</h2>
+          <p>
+            Email:
+            <a href="mailto:antonio.rn98@gmail.com" class="text-primary">
+              antonio.rn98@gmail.com
+            </a>
+          </p>
+          <p>Teléfono: +34 722 23 67 62</p>
+          <p>
+            LinkedIn:
+            <a
+              href="https://www.linkedin.com/in/antonio-jose-rodriguez-nevado"
+              target="_blank"
+              class="text-primary"
+            >
+              antonio-jose-rodriguez-nevado
+            </a>
+          </p>
+        </div>
+      </section>
+    </main>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 bg-lightgray text-center" data-aos="fade-up">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-6">Contacto</h2>
-        <p>Email: <a href="mailto:antonio.rn98@gmail.com" class="text-primary">antonio.rn98@gmail.com</a></p>
-        <p>Teléfono: +34 722 23 67 62</p>
-        <p>LinkedIn:
-          <a href="https://www.linkedin.com/in/antonio-jose-rodriguez-nevado" target="_blank" class="text-primary">
-            antonio-jose-rodriguez-nevado
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <!-- Footer -->
+    <!-- Footer fijo -->
     <footer
-      class="fixed bottom-0 left-0 w-full bg-[#1D1D1F] text-white text-center py-6 z-50" data-aos="fade-in">
+      class="fixed bottom-0 left-0 w-full bg-[#1D1D1F] text-white text-center py-6 z-50"
+      data-aos="fade-in"
+    >
       <p>© 2025 Antonio José Rodríguez Nevado</p>
     </footer>
 
@@ -174,7 +225,10 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 
     <!-- highlight.js CSS (tema "github-dark" de ejemplo) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github-dark.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github-dark.css"
+    />
     <!-- highlight.js core -->
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/core.js"></script>
     <!-- highlight.js Javascript -->
