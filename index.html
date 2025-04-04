@@ -20,7 +20,7 @@
       }
     </script>
 
-    <!-- Librería de Marked.js (para parsear Markdown) -->
+    <!-- Librería de Marked.js (para parsear Markdown en el navegador) -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
     <!-- AOS CSS -->
@@ -38,24 +38,37 @@
     <!-- Typography -->
     <link rel="stylesheet" href="css/typography.css" />
 
+    <!-- highlight.js CSS (ejemplo de tema) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github-dark.css"
+    />
+
     <style>
+      /* Smooth scroll a nivel HTML (opcional) */
       html {
         scroll-behavior: smooth;
       }
+      /* El body sin scroll, lo manejará <main> */
       body {
-        margin: 0; /* Asegúrate de anular cualquier margen por defecto */
+        margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: -apple-system, BlinkMacSystemFont,
           "SF Pro Text", "SF Pro Icons",
           "Helvetica Neue", "Helvetica",
           "Arial", sans-serif;
+
+        /* Para que no haya barra doble de scroll */
+        overflow: hidden;
       }
     </style>
   </head>
 
-  <body class="bg-lightgray text-gray-800 font-sans overflow-hidden">
-    <!-- NAV fija arriba (4rem = h-16) -->
+  <body class="bg-lightgray text-gray-800 font-sans">
+
+    <!-- Navbar fijo arriba -->
+    <!-- h-16 => altura 4rem; ajústala si tu navbar es más alta -->
     <nav class="fixed top-0 left-0 w-full h-16 bg-[#1D1D1F] text-white shadow-md z-50 flex items-center">
       <div class="max-w-6xl mx-auto px-4 w-full flex items-center justify-between">
         <div class="font-semibold text-lg">Antonio</div>
@@ -70,25 +83,23 @@
       </div>
     </nav>
 
-    <!-- Contenedor principal absoluto 
-         top-16 => empieza debajo de la navbar
-         bottom-16 => termina justo encima del footer
-         snap-y snap-mandatory => scroll snap vertical
-         overflow-y-scroll => scroll dentro de este contenedor
-         scroll-smooth => scroll suave
-    -->
+    <!-- Contenedor principal con Scroll Snap -->
+    <!-- absolute top-16 bottom-16 => ocupa la ventana menos la nav (16) y el footer (16) -->
+    <!-- snap-y snap-mandatory => scroll snap vertical obligatorio -->
+    <!-- overflow-y-scroll => se desplaza en este contenedor -->
+    <!-- scroll-smooth => desplazamiento suave -->
     <main class="absolute top-16 left-0 right-0 bottom-16 snap-y snap-mandatory overflow-y-scroll scroll-smooth">
-      
+
       <!-- Hero Section -->
       <section 
         id="hero" 
-        class="snap-start w-full h-full bg-white flex items-center justify-center px-6"
+        class="snap-start h-screen px-6 bg-white flex items-center justify-center"
+        data-aos="fade-right"
       >
         <div class="max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start">
           <!-- Columna de texto -->
           <div 
             class="w-full md:w-1/2 md:pr-8 flex flex-col items-center md:items-start text-center md:text-left"
-            data-aos="fade-right"
           >
             <h1 class="text-5xl font-bold" id="hero-name">
               ANTONIO JOSÉ RODRÍGUEZ NEVADO
@@ -103,8 +114,8 @@
                 Contact
               </a>
               <a href="assets/cv/cv_antonio.pdf" 
-                 class="button2 button2-turquoise" 
-                 download
+                class="button2 button2-turquoise" 
+                download
               >
                 Download CV
               </a>
@@ -127,12 +138,13 @@
 
       <!-- About Section -->
       <section 
-        id="about" 
-        class="snap-start w-full h-full bg-lightgray flex items-center justify-center px-6"
+        id="about"
+        class="snap-start h-screen px-6 bg-lightgray flex items-center justify-center"
         data-aos="fade-up"
       >
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl font-bold mb-6">Acerca de mí</h2>
+          <!-- Contenido about.md (inyectado con JS si lo deseas) -->
           <div id="about-content" class="prose"></div>
         </div>
       </section>
@@ -140,11 +152,12 @@
       <!-- Experience Section -->
       <section 
         id="experience"
-        class="snap-start w-full h-full bg-white flex items-center justify-center px-6"
+        class="snap-start h-screen px-6 bg-white flex items-center justify-center"
         data-aos="fade-up"
       >
         <div class="max-w-5xl mx-auto">
           <h2 class="text-3xl font-bold mb-12 text-center">Experiencia</h2>
+          <!-- Contenido experience.md -->
           <div id="experience-content" class="prose"></div>
         </div>
       </section>
@@ -152,11 +165,12 @@
       <!-- Education Section -->
       <section 
         id="education"
-        class="snap-start w-full h-full bg-lightgray flex items-center justify-center px-6"
+        class="snap-start h-screen px-6 bg-lightgray flex items-center justify-center"
         data-aos="fade-up"
       >
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl font-bold mb-6">Educación</h2>
+          <!-- Contenido education.md -->
           <div id="education-content" class="prose"></div>
         </div>
       </section>
@@ -164,11 +178,12 @@
       <!-- Skills Section -->
       <section
         id="skills"
-        class="snap-start w-full h-full bg-white flex items-center justify-center px-6"
+        class="snap-start h-screen px-6 bg-white flex items-center justify-center"
         data-aos="fade-up"
       >
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl font-bold mb-6">Habilidades</h2>
+          <!-- Contenido skills.md -->
           <div id="skills-content" class="prose"></div>
         </div>
       </section>
@@ -176,12 +191,13 @@
       <!-- Contact Section -->
       <section
         id="contact"
-        class="snap-start w-full h-full bg-lightgray flex items-center justify-center text-center px-6"
+        class="snap-start h-screen px-6 bg-lightgray flex items-center justify-center text-center"
         data-aos="fade-up"
       >
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl font-bold mb-6">Contacto</h2>
-          <p>Email:
+          <p>
+            Email: 
             <a href="mailto:antonio.rn98@gmail.com" class="text-primary">
               antonio.rn98@gmail.com
             </a>
@@ -201,7 +217,7 @@
       </section>
     </main>
 
-    <!-- Footer fijo abajo (4rem = h-16) -->
+    <!-- Footer fijo (h-16 => 4rem) -->
     <footer
       class="fixed bottom-0 left-0 w-full h-16 bg-[#1D1D1F] text-white text-center flex items-center justify-center z-50"
       data-aos="fade-in"
@@ -211,12 +227,10 @@
 
     <!-- AOS JS -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 
-    <!-- highlight.js CSS (tema "github-dark") -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github-dark.css"
-    />
     <!-- highlight.js core -->
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/core.js"></script>
     <!-- highlight.js Javascript -->
@@ -224,7 +238,7 @@
     <!-- highlight.js Python -->
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/languages/python.js"></script>
 
-    <!-- Nuestro script principal -->
+    <!-- Tu script principal -->
     <script src="js/main.js"></script>
   </body>
 </html>
