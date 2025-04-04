@@ -20,35 +20,25 @@
       }
     </script>
 
-    <!-- Librería de Marked.js (para parsear Markdown en el navegador) -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <!-- AOS CSS -->
+    <!-- AOS CSS (para animaciones de scroll) -->
     <link
       href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
       rel="stylesheet"
     />
 
-    <!-- CSS button -->
+    <!-- CSS de botones, estilos, tipografías, highlight (si lo usas) -->
     <link rel="stylesheet" href="css/button.css">
-
-    <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css" />
-
-    <!-- Typography -->
     <link rel="stylesheet" href="css/typography.css" />
-
-    <!-- highlight.js CSS (ejemplo de tema) -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github-dark.css"
     />
 
     <style>
-      /* Si quieres, puedes comentar la siguiente línea para no interferir con scroll.js */
+      /* Puedes comentar esta línea si no deseas que afecte a tu scroll.js */
       /* html { scroll-behavior: smooth; } */
 
-      /* El body sin scroll, lo manejará <main> */
       body {
         margin: 0;
         padding: 0;
@@ -57,15 +47,14 @@
           "SF Pro Text", "SF Pro Icons",
           "Helvetica Neue", "Helvetica",
           "Arial", sans-serif;
-
-        /* Para que no haya barra doble de scroll */
+        
+        /* Para que no haya scroll duplicado */
         overflow: hidden;
       }
     </style>
   </head>
 
   <body class="bg-lightgray text-gray-800 font-sans">
-
     <!-- Navbar fijo arriba -->
     <nav class="fixed top-0 left-0 w-full h-16 bg-[#1D1D1F] text-white shadow-md z-50 flex items-center">
       <div class="max-w-6xl mx-auto px-4 w-full flex items-center justify-between">
@@ -82,7 +71,6 @@
     </nav>
 
     <!-- Contenedor principal con overflow para scroll manual -->
-    <!-- Se eliminan snap-y, snap-mandatory, scroll-smooth -->
     <main class="absolute top-16 left-0 right-0 bottom-16 overflow-y-scroll">
       
       <!-- Hero Section -->
@@ -105,12 +93,10 @@
 
             <!-- Fila de botones -->
             <div class="flex flex-row space-x-4 mt-8">
-              <a href="#contact" class="button2 button2-orange">
-                Contact
-              </a>
+              <a href="#contact" class="button2 button2-orange">Contact</a>
               <a href="assets/cv/cv_antonio.pdf" 
-                class="button2 button2-turquoise" 
-                download
+                 class="button2 button2-turquoise" 
+                 download
               >
                 Download CV
               </a>
@@ -137,11 +123,22 @@
         class="h-screen px-6 bg-lightgray flex items-center justify-center"
         data-aos="fade-up"
       >
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-4xl mx-auto prose">
           <h2 class="text-3xl font-bold mb-6">Acerca de mí</h2>
-          <div id="about-content" class="prose">
-            <!-- Contenido about.md (inyectado con JS, si lo deseas) -->
-          </div>
+          <!-- Aquí ponemos tu contenido, ya en HTML -->
+          <p>
+            Soy un Data Analyst con más de dos años de experiencia 
+            en proyectos de análisis, ingeniería y ciencia de datos.
+            Domino herramientas como <strong>Python</strong>, <strong>SQL</strong>, 
+            <strong>Spark</strong> y <strong>AWS</strong>. Me caracterizo por ser 
+            proactivo, autodidacta, y tener una fuerte orientación a resultados.
+          </p>
+          <h3>Puntos clave</h3>
+          <ul>
+            <li>Trabajo en equipo</li>
+            <li>Aprendizaje continuo</li>
+            <li>Foco en resultados</li>
+          </ul>
         </div>
       </section>
 
@@ -151,11 +148,26 @@
         class="h-screen px-6 bg-white flex items-center justify-center"
         data-aos="fade-up"
       >
-        <div class="max-w-5xl mx-auto">
-          <h2 class="text-3xl font-bold mb-12 text-center">Experiencia</h2>
-          <div id="experience-content" class="prose">
-            <!-- Contenido experience.md -->
-          </div>
+        <div class="max-w-5xl mx-auto prose">
+          <h2 class="text-3xl font-bold mb-6">Experiencia</h2>
+
+          <h3>Data Analyst | Endesa X</h3>
+          <p><strong>Años:</strong> 2022 - Presente</p>
+          <ul>
+            <li>Análisis de datos, desarrollo de ETL, modelos predictivos y dashboards con Power BI/Tableau</li>
+            <li>Bases de datos SQL y NoSQL</li>
+            <li>Colaboración con equipos técnicos y de negocio</li>
+          </ul>
+
+          <hr />
+
+          <h3>Data Engineer | Otra empresa</h3>
+          <p><strong>Años:</strong> 2021 - 2022</p>
+          <ul>
+            <li>Pipelines de datos en AWS (Glue, S3, Lambda)</li>
+            <li>Optimización de consultas SQL</li>
+            <li>Procesamiento en tiempo real con Apache Kafka</li>
+          </ul>
         </div>
       </section>
 
@@ -165,11 +177,14 @@
         class="h-screen px-6 bg-lightgray flex items-center justify-center"
         data-aos="fade-up"
       >
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-4xl mx-auto prose">
           <h2 class="text-3xl font-bold mb-6">Educación</h2>
-          <div id="education-content" class="prose">
-            <!-- Contenido education.md -->
-          </div>
+          <h3>Máster en Big Data, Data Science &amp; AI</h3>
+          <p>Universidad Complutense de Madrid (2024 - 2025)</p>
+          <ul>
+            <li>Asignaturas principales: Machine Learning, Big Data, HPC, etc.</li>
+            <li>Proyecto de fin de máster en Computer Vision.</li>
+          </ul>
         </div>
       </section>
 
@@ -179,11 +194,24 @@
         class="h-screen px-6 bg-white flex items-center justify-center"
         data-aos="fade-up"
       >
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-4xl mx-auto prose">
           <h2 class="text-3xl font-bold mb-6">Habilidades</h2>
-          <div id="skills-content" class="prose">
-            <!-- Contenido skills.md -->
-          </div>
+          
+          <h3>Habilidades Técnicas</h3>
+          <ul>
+            <li>Python</li>
+            <li>SQL</li>
+            <li>Spark</li>
+            <li>AWS</li>
+            <li>MongoDB</li>
+            <li>Power BI / Tableau</li>
+          </ul>
+
+          <h3>Otros</h3>
+          <ul>
+            <li>Metodologías ágiles (Scrum)</li>
+            <li>CI/CD (GitHub Actions)</li>
+          </ul>
         </div>
       </section>
 
@@ -224,23 +252,21 @@
       <p>© 2025 Antonio José Rodríguez Nevado</p>
     </footer>
 
-    <!-- AOS JS -->
+    <!-- AOS JS (animaciones) -->
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init();
     </script>
 
-    <!-- highlight.js core -->
+    <!-- highlight.js (opcional) -->
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/core.js"></script>
-    <!-- highlight.js Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/languages/javascript.js"></script>
-    <!-- highlight.js Python -->
     <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/languages/python.js"></script>
 
-    <!-- Tu script principal -->
+    <!-- Tu script principal (si tienes lógica adicional) -->
     <script src="js/main.js"></script>
 
-    <!-- Script de scroll suave con centrado -->
+    <!-- Script del scroll (centrado suave al parar de scrollear) -->
     <script src="js/scroll.js"></script>
   </body>
 </html>
