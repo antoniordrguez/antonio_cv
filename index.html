@@ -45,12 +45,10 @@
     />
 
     <style>
-      /* Desplazamiento suave en todo el documento */
-      html {
-        scroll-behavior: smooth;
-      }
+      /* Si quieres, puedes comentar la siguiente línea para no interferir con scroll.js */
+      /* html { scroll-behavior: smooth; } */
 
-      /* Evitamos doble scroll en body */
+      /* El body sin scroll, lo manejará <main> */
       body {
         margin: 0;
         padding: 0;
@@ -59,36 +57,15 @@
           "SF Pro Text", "SF Pro Icons",
           "Helvetica Neue", "Helvetica",
           "Arial", sans-serif;
-        /* Sin scroll en el body */
+
+        /* Para que no haya barra doble de scroll */
         overflow: hidden;
-      }
-
-      /* 
-         Ajustamos el contenedor principal para que 
-         use scroll-snap con menos brusquedad 
-      */
-      main {
-        /* 
-           Cambia de "snap-y snap-mandatory" a "snap-y snap-proximity"
-           para que no sea tan agresivo.
-        */
-        scroll-snap-type: y proximity;
-      }
-
-      /*
-         Forzamos a cada sección a alinearse en el centro
-         (en lugar de snap-start). 
-         Tailwind no trae "snap-center" como clase por defecto,
-         pero puedes usar "snap-center" en <section> 
-         o añadir tu propio CSS:
-      */
-      section {
-        scroll-snap-align: center; /* en lugar de snap-start */
       }
     </style>
   </head>
 
   <body class="bg-lightgray text-gray-800 font-sans">
+
     <!-- Navbar fijo arriba -->
     <nav class="fixed top-0 left-0 w-full h-16 bg-[#1D1D1F] text-white shadow-md z-50 flex items-center">
       <div class="max-w-6xl mx-auto px-4 w-full flex items-center justify-between">
@@ -104,15 +81,15 @@
       </div>
     </nav>
 
-    <!-- Contenedor principal con Scroll Snap -->
-    <!-- Cambiamos de snap-mandatory a snap-proximity -->
-    <main class="absolute top-16 left-0 right-0 bottom-16 snap-y overflow-y-scroll scroll-smooth">
+    <!-- Contenedor principal con overflow para scroll manual -->
+    <!-- Se eliminan snap-y, snap-mandatory, scroll-smooth -->
+    <main class="absolute top-16 left-0 right-0 bottom-16 overflow-y-scroll">
+      
       <!-- Hero Section -->
       <section 
         id="hero" 
         class="h-screen px-6 bg-white flex items-center justify-center"
         data-aos="fade-right"
-        style="scroll-snap-align: center;"
       >
         <div class="max-w-6xl w-full flex flex-col md:flex-row items-center md:items-start">
           <!-- Columna de texto -->
@@ -159,11 +136,12 @@
         id="about"
         class="h-screen px-6 bg-lightgray flex items-center justify-center"
         data-aos="fade-up"
-        style="scroll-snap-align: center;"
       >
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl font-bold mb-6">Acerca de mí</h2>
-          <div id="about-content" class="prose"></div>
+          <div id="about-content" class="prose">
+            <!-- Contenido about.md (inyectado con JS, si lo deseas) -->
+          </div>
         </div>
       </section>
 
@@ -172,11 +150,12 @@
         id="experience"
         class="h-screen px-6 bg-white flex items-center justify-center"
         data-aos="fade-up"
-        style="scroll-snap-align: center;"
       >
         <div class="max-w-5xl mx-auto">
           <h2 class="text-3xl font-bold mb-12 text-center">Experiencia</h2>
-          <div id="experience-content" class="prose"></div>
+          <div id="experience-content" class="prose">
+            <!-- Contenido experience.md -->
+          </div>
         </div>
       </section>
 
@@ -185,11 +164,12 @@
         id="education"
         class="h-screen px-6 bg-lightgray flex items-center justify-center"
         data-aos="fade-up"
-        style="scroll-snap-align: center;"
       >
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl font-bold mb-6">Educación</h2>
-          <div id="education-content" class="prose"></div>
+          <div id="education-content" class="prose">
+            <!-- Contenido education.md -->
+          </div>
         </div>
       </section>
 
@@ -198,11 +178,12 @@
         id="skills"
         class="h-screen px-6 bg-white flex items-center justify-center"
         data-aos="fade-up"
-        style="scroll-snap-align: center;"
       >
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl font-bold mb-6">Habilidades</h2>
-          <div id="skills-content" class="prose"></div>
+          <div id="skills-content" class="prose">
+            <!-- Contenido skills.md -->
+          </div>
         </div>
       </section>
 
@@ -211,7 +192,6 @@
         id="contact"
         class="h-screen px-6 bg-lightgray flex items-center justify-center text-center"
         data-aos="fade-up"
-        style="scroll-snap-align: center;"
       >
         <div class="max-w-4xl mx-auto">
           <h2 class="text-3xl font-bold mb-6">Contacto</h2>
@@ -250,8 +230,17 @@
       AOS.init();
     </script>
 
+    <!-- highlight.js core -->
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/core.js"></script>
+    <!-- highlight.js Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/languages/javascript.js"></script>
+    <!-- highlight.js Python -->
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/lib/languages/python.js"></script>
+
     <!-- Tu script principal -->
     <script src="js/main.js"></script>
+
+    <!-- Script de scroll suave con centrado -->
+    <script src="js/scroll.js"></script>
   </body>
 </html>
-
